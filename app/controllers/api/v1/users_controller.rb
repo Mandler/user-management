@@ -10,6 +10,11 @@ module Api
         response = Api::Users::Create.new(params).call
         render response
       end
+
+      def destroy
+        response = Api::Users::Destroy.new(params).call
+        render response
+      end
     end
   end
 end

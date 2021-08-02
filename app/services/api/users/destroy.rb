@@ -1,20 +1,20 @@
 module Api
   module Users
-    class Create
+    class Destroy
       def initialize(params)
         @params = params
       end
 
       def call
-        create_user
+        destroy_user
       end
 
       private
 
       attr_reader :params
 
-      def create_user
-        User.create!(user_params)
+      def destroy_user
+        User.find(params[:id]).destroy
         response :ok, {}
       rescue => e
         response :internal_server_error, {errors: e.message}
@@ -22,10 +22,6 @@ module Api
 
       def response(status, json)
         {status: status, json: json}
-      end
-
-      def user_params
-        params.require(:users).permit(:first_name, :last_name, :email)
       end
     end
   end
