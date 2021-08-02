@@ -6,6 +6,11 @@ module Api
         render response
       end
 
+      def show
+        response = Api::Users::Show.new(params).call
+        render response
+      end
+
       def create
         response = Api::Users::Create.new(params).call
         render response
