@@ -15,7 +15,7 @@ module Api
 
       def create_user
         User.create!(user_params)
-        response :ok, {}
+        response :created, {}
       rescue => e
         response :internal_server_error, {errors: e.message}
       end
