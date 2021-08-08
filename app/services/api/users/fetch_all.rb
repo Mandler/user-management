@@ -17,9 +17,9 @@ module Api
         users = User.all.select(:id, :first_name, :last_name, :email)
 
         case params[:order_by]
-        when 'email'
+        when "email"
           users = users.order(:email)
-        when 'name'
+        when "name"
           users = users.order(:first_name, :last_name)
         end
 
